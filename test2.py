@@ -14,19 +14,19 @@ with open(INPUT, 'r') as maCP:
             'sec-fetch-site': 'same-origin',
             'sec-fetch-mode': 'cors',
             'sec-fetch-dest': 'empty',
-            'referer': 'https://www.stockbiz.vn/Stocks/{}/HistoricalQuotes.aspx'.format(CP.strip()),
+            'referer': 'https://www.stockbiz.vn/Stocks/AAA/HistoricalQuotes.aspx',
             'accept-language': 'en,vi;q=0.9,en-GB;q=0.8,en-US;q=0.7',
         }
+
         for i in range (1, 39):
             data = [
-            ('Cart_ctl00_webPartManager_wp1770166562_wp1427611561_callbackData_Callback_Param', '2017-8-10'),
-            ('Cart_ctl00_webPartManager_wp1770166562_wp1427611561_callbackData_Callback_Param', '2020-8-10'),
-            ('Cart_ctl00_webPartManager_wp1770166562_wp1427611561_callbackData_Callback_Param', '{}'.format(i)),
+                ('Cart_ctl00_webPartManager_wp1770166562_wp1427611561_callbackData_Callback_Param', '2017-8-10^'),
+                ('Cart_ctl00_webPartManager_wp1770166562_wp1427611561_callbackData_Callback_Param', '2020-8-10^'),
+                ('Cart_ctl00_webPartManager_wp1770166562_wp1427611561_callbackData_Callback_Param', '2'),
             ]
 
-            response = requests.post('https://www.stockbiz.vn/Stocks/{}/HistoricalQuotes.aspx'.format(CP.strip()), headers=headers, data=data)
+            response = requests.post('https://www.stockbiz.vn/Stocks/AAA/HistoricalQuotes.aspx', headers=headers, data=data)
             with open (OUTPUT.format(CP.strip()), 'a', encoding='utf8') as f:
                 f.write(response.text)
             print(CP.strip()+"--finished crawling page {}".format(i))
-        print("_____________FINISHED GETTING {}'S STOCK PRICE DATA_____________".format(CP.strip()))
 
